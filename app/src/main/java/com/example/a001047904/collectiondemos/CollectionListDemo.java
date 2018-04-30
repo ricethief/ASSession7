@@ -81,6 +81,56 @@ public class CollectionListDemo extends Activity {
         a= (Address) myList.get(7);
         output("Country=" + a.getCountry());
         output("country=" + ((Address) (myList.get(7))).getCountry());
+
+        //REPLACE
+        //Setting an element to a particular value
+
+        a = new Address("TEST ST NUM","TEST ST NAME", "TEST ST SUB", "TEST ST STATE","TEST ST COUNTRY","TEST ST PCODE");
+
+        myList.set(2,"INSERT TEST");
+        output("After Insert at index 2 of 'INSERT TEST': " + myList);
+
+        //DELETE
+        //Deleting an element to a particular value
+        //Normally we stroe only one type of data so lets delete the Strings we put
+
+        myList.remove(0);
+        myList.remove("INSERT TEST");
+        myList.remove("A");
+        myList.remove("E");
+        myList.remove("B");
+        myList.remove("XX");
+        output("After Deletions. Contents of a1: "+ myList);
+
+        // TRAVERSE ALL ELEMENTS
+        // Traverse the list ie do something with every element in the list
+
+        // One way is using get
+
+        int i;
+        for(i=0; i < myList.size(); i++){
+            a = (Address) myList.get(i);
+            output("Do something with element " + i + " which is -> " + a);
+
+        }
+
+        //Better way is to use an Iterator.
+//        ListIterator it;
+//        it = myList.listIterator();
+//        while (it.hasNext()) {
+//            a=(Address) it.next();
+//            output("Do something with element " + it.previous() + "which is " + a);
+
+//        }
+
+
+        // The for loop was extended in jdk 1.5 to simplify traversal of a collection.
+        // this is commonly known as the 'for each' loop
+        //note that (without extra code) we no longer know where we are at in the list
+        for (Object aTemp : myList) {
+            a = (Address) aTemp;
+            output("Do something with element -> " + a);
+        }
     }
 
 
